@@ -1,5 +1,6 @@
 package demo.springboot.web;
 
+import demo.springboot.config.BookComponent;
 import demo.springboot.config.BookProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,13 @@ public class HelloBookController {
 
     @Autowired
     BookProperties bookProperties;
+    @Autowired
+    BookComponent bookComponent;
 
     @GetMapping("/book/hello")
     public String sayHello() {
         return "Hello， " + bookProperties.getWriter() + " is writing "
-                + bookProperties.getName() + " ！";
+                + bookProperties.getName() + " ！" + bookProperties.getWriter() +" is wrting "
+                + bookComponent.getName() + " !";
     }
 }
